@@ -1,10 +1,10 @@
 # Unsaved changes example
 
-A POC for showing an "unsaved changes" warning when a user tries to leave a page, either by clicking a link or the browser's 'back' or 'forward' buttons. This can be useful on pages with forms, or in other instances where navigating to another page will destroy a user's work. 
+A POC for showing an "unsaved changes" warning when a user tries to leave a page, either by clicking a link or the browser's `back` or `forward` buttons. This can be useful on pages with forms, or in other instances where navigating to another page will destroy a user's work. 
 
-All internal links are handled in Elm, and navigation by the browser's 'back' or 'forward' is handled with a popstate event listener and communicated through ports.
+All internal links are handled in Elm, and navigation by the browser's `back` or `forward` buttons is handled with a popstate event listener and communicated through ports.
 
-Navigation is not blocked when a user clicks the browser's 'refresh' button.
+Navigation is not blocked when a user clicks the browser's `refresh` button.
 
 
 ## Includes
