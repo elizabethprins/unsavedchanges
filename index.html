@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <title>Unsaved changes example</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/style.css">
+        <script src="/main.js"></script>
+    </head>
+
+    <body>
+        <div id="elm"></div>
+        <script>
+            var app = Elm.Main.init({
+                node: document.getElementById('elm')
+            });
+
+            window.onload = function() {
+                var location = "";
+
+                const popstateListener = (event) => {
+                    const toUrl = window.location.href;
+                    history.pushState(null, "", location)
+                    app.ports.blockNavigationReceiver.send({
+                        location: location,
+                        toUrl: toUrl
+                    })
+                }
+
+                app.ports.sendShouldBlockNavigation.subscribe(function(shouldBlock) {
+                    if (shouldBlock) {
+                        location = window.location.href
+                        window.addEventListener('popstate', popstateListener);
+                    } else {
+                        window.removeEventListener('popstate', popstateListener);
+                    }
+                });
+            }
+        </script>
+    </body>
+</html>
+
+ <!-- (() => {
+    let currentPushState = history.pushState;
+    history.pushState = function pushState() {
+        let ret = currentPushState.apply(this, arguments);
+        window.dispatchEvent(new Event('locationchange'));
+        return ret;
+    };
+
+    let currentReplaceState = history.replaceState;
+    history.replaceState = function replaceState() {
+        let ret = currentReplaceState.apply(this, arguments);
+        window.dispatchEvent(new Event('locationchange'));
+        return ret;
+    };
+})();
+
+const locationChangeListener = (e) => {
+    console.log("location changed!", window.location.href)
+    console.log("previous location:", location)
+    location = window.location.href
+} -->

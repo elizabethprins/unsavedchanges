@@ -1,0 +1,92 @@
+html {
+    height: 100%;
+    box-sizing: border-box;
+    font-size: 100%;
+}
+
+body {
+    font-family: $sans;
+    font-size: normal;
+    font-weight: 400;
+    line-height: 1.5;
+    color: $black;
+}
+
+main {
+    padding: 2rem 1rem;
+    display: flex;
+    gap: 3rem;
+}
+
+h1 {
+    margin: 0 0 1em;
+    font-size: 3em;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+button {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-osx-appearance: none;
+    padding: .5em 1em;
+    border: 1px solid currentColor;
+    border-radius: 5px;
+    color: currentColor;
+    background: transparent;
+    overflow: visible;
+    cursor: pointer;
+}
+
+.blue {
+    color: $blue;
+}
+
+.green {
+    color: $green;
+}
+
+.red {
+    color: $red;
+}
+
+.yellow {
+    color: $yellow;
+}
+
+
+.modal {
+    position: fixed;
+    inset: 0 0 0 0;
+    display: flex;
+    place-content: center;
+    align-items: flex-start;
+    background: rgba($black, 0.5);
+}
+
+.modal__content {
+    margin-top: 3rem;
+    padding: 2rem 3rem;
+    background: $white;
+}
+
+.buttons {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.button-primary {
+    color: $white;
+    background: $blue;
+    border-color: $blue;
+}
+
+.button-secondary {
+    color: $blue;
+}
